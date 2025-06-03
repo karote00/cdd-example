@@ -1,0 +1,35 @@
+{
+  "name": "@cdd-example/ui-context",
+  "version": "1.0.1",
+  "description": "Manages and optimizes data from data contexts for UI consumption, ensuring efficient rendering and framework flexibility.",
+  "author": "Asa Tsai",
+  "license": "MIT",
+  "packageManager": "yarn@4.3.1",
+  "keywords": [],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build:ui-context": "tsc",
+    "clean": "rm -rf dist",
+    "has:test": "find . -type f \\( -name \"*.test.ts\" -o -name \"*.test.tsx\" \\) | grep -q .",
+    "test": "yarn has:test && vitest || echo 'No test files found. Skipping test.'",
+    "test:ci": "yarn has:test && vitest run --coverage --reporter=default --reporter=junit || echo 'No test files found. Skipping test:ci.'"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4",
+    "@vitest/coverage-v8": "^2.1.8",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "@cdd-example/factory": "workspace:*",
+    "@cdd-example/reactive-events": "workspace:*",
+    "@cdd-example/scene-tree": "workspace:*",
+    "@cdd-example/selection": "workspace:*",
+    "@cdd-example/utils": "workspace:*",
+    "lodash": "^4.17.21",
+    "rxjs": "^7.8.1",
+    "yjs": "13.6.20"
+  }
+}

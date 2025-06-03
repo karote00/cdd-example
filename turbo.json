@@ -1,0 +1,189 @@
+{
+  "tasks": {
+    "watch:design-system": {
+      "cache": false,
+      "persistent": true
+    },
+    "dev": {
+      "cache": false,
+      "dependsOn": [
+        "^dev"
+      ],
+      "outputs": [
+        "dist/**"
+      ],
+      "persistent": true
+    },
+    "react:start": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
+    },
+    "test": {},
+    "test:ci": {},
+    "react:build": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:core",
+        "^build:design-system",
+        "^build:reactive-events",
+        "^build:ui-context",
+        "^build:utils"
+      ]
+    },
+    "build:core": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:factory",
+        "^build:input-system",
+        "^build:interaction-core",
+        "^build:props-manager",
+        "^build:reactive-events",
+        "^build:render",
+        "^build:scene-tree",
+        "^build:selection",
+        "^build:system-context",
+        "^build:utils"
+      ]
+    },
+    "build:design-system": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:utils"
+      ]
+    },
+    "build:event-emitter": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": []
+    },
+    "build:factory": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:reactive-events",
+        "^build:utils"
+      ]
+    },
+    "build:input-system": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:reactive-events",
+        "^build:utils"
+      ]
+    },
+    "build:interaction-core": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:reactive-events",
+        "^build:utils"
+      ]
+    },
+    "build:props-manager": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:reactive-events",
+        "^build:utils"
+      ]
+    },
+    "build:reactive-events": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:utils"
+      ]
+    },
+    "build:render": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:factory",
+        "^build:reactive-events",
+        "^build:scene-tree",
+        "^build:utils"
+      ]
+    },
+    "build:scene-tree": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:props-manager",
+        "^build:reactive-events",
+        "^build:utils"
+      ]
+    },
+    "build:selection": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:reactive-events",
+        "^build:utils"
+      ]
+    },
+    "build:system-context": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:reactive-events",
+        "^build:utils"
+      ]
+    },
+    "build:ui-context": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:factory",
+        "^build:reactive-events",
+        "^build:scene-tree",
+        "^build:selection",
+        "^build:utils"
+      ]
+    },
+    "build:utils": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": []
+    }
+  }
+}

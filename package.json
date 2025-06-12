@@ -30,11 +30,13 @@
     "clean": "turbo run clean",
     "reinstall": "yarn clean && rm -rf node_modules .turbo && yarn && yarn react:build",
     "gen:turbo": "node scripts/gen-turbo.js",
-    "predev": "yarn gen:turbo"
+    "predev": "yarn gen:turbo",
+    "dev:docs": "turbo run dev:docs"
   },
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "docs-site"
   ],
   "engines": {
     "node": "20.x",

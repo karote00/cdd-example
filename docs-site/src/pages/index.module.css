@@ -1,0 +1,14 @@
+.heroBanner {
+  padding: 4rem 0;
+  background-color: #25c2a0;
+  color: white;
+  text-align: center;
+}
+
+.buttons {
+  margin-top: 1.5rem;
+}
+
+.features {
+  padding: 2rem 0;
+}

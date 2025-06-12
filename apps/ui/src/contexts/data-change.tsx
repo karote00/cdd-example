@@ -9,6 +9,11 @@ import core from './core'
 
 const DataContexts = () => {
   useEffect(() => {
+    // TODO: test code to prevent empty file
+    if (!localStorage.getItem('FILE')) {
+      localStorage.setItem('FILE', JSON.stringify({}))
+    }
+
     initDataContexts()
 
     const renderSubscription = subscribeToRenderIsReady(() => {

@@ -21,6 +21,11 @@
       ],
       "persistent": true
     },
+    "dev:docs": {
+      "cache": false,
+      "dependsOn": [],
+      "outputs": []
+    },
     "clean": {
       "cache": false
     },
@@ -99,6 +104,7 @@
         "dist/**"
       ],
       "dependsOn": [
+        "^build:input-system",
         "^build:reactive-events",
         "^build:utils"
       ]

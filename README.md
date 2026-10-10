@@ -26,10 +26,22 @@ Each sub-repo highlights part of the pattern — it is a minimal example, **not 
 
 ## Documentation Links
 
-- [CDD Docs](https://cdd-docs.vercel.app/)
-- [CDD Demo](https://cdd-demo.vercel.app/)
+- <a href="https://cdd-docs.pages.dev" target="_blank" rel="noopener noreferrer">CDD Docs</a>
+- <a href="https://cdd-demo.pages.dev" target="_blank" rel="noopener noreferrer">CDD Demo</a>
 
 ---
+
+## Deployment
+
+Both Cloudflare Pages sites use manual Direct Upload. Pushes and merges run
+validation only; they do not publish either site. The existing Vercel projects
+remain available for manual deployment, with their Git integrations disconnected.
+See [Demo deployment](apps/ui/README.md) and [Docs deployment](docs-site/README.md)
+for build, verification, and upload instructions.
+
+The demo runs entirely in the browser and stores its scene in localStorage.
+Opening the Cloudflare URL starts a separate local scene: browser data from
+the old hostname is not transferred automatically.
 
 ## Available Actions in the Demo
 
@@ -56,8 +68,8 @@ yarn dev:all
 ```
 
 This will launch the example setup.
-Please note that **none of the individual repos include their own README** —
-for explanations, structure, and usage details, please refer to the [documentation site](https://cdd-docs.vercel.app/).
+For explanations, structure, and usage details, please refer to the
+<a href="https://cdd-docs.pages.dev" target="_blank" rel="noopener noreferrer">documentation site</a>.
 
 ---
 

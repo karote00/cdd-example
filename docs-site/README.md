@@ -5,6 +5,10 @@ It is a static Docusaurus site deployed manually to the Cloudflare Pages
 `cdd-docs` project using Direct Upload. There is no Cloudflare Git integration
 or automatic deployment on push or merge.
 
+The interactive example is available at
+<a href="https://cdd-demo.pages.dev" target="_blank" rel="noopener noreferrer">CDD Demo</a>.
+Its separate manual deployment instructions are in [the Demo README](../apps/ui/README.md).
+
 ## Local development
 
 Run these commands from the repository root, using the Node.js and Yarn versions

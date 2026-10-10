@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# CDD Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Open <a href="https://cdd-demo.pages.dev" target="_blank" rel="noopener noreferrer">CDD Demo</a>
+or read the <a href="https://cdd-docs.pages.dev" target="_blank" rel="noopener noreferrer">CDD documentation</a>.
 
-## Available Scripts
+The demo is a Vite/React application with a browser-rendered canvas. It does not
+require a backend, server functions, AI credentials, or a database service.
+Scenes and theme preferences are stored in localStorage on each hostname.
+The Cloudflare copy cannot access data saved under the previous hostname.
 
-In the project directory, you can run:
+## Local development
 
-### `npm start`
+From the repository root, use the Node.js and Yarn versions in `package.json`:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+yarn install --immutable
+yarn dev:all
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+See the root README for the available tools and keyboard shortcuts.
 
-### `npm test`
+## Build and verify
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+yarn gen:turbo
+yarn test:deployment
+yarn react:build
+yarn test:build:demo
+yarn lint:ci
+yarn test:ci
+```
 
-### `npm run build`
+The existing build produces the static site in the repository's `dist/`
+directory. The Vercel plugin also prepares Vercel output separately; only
+`dist/` is needed by Cloudflare. The artifact test checks the entry page, local
+asset references, manifest icons, and absence of server functions and secrets.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Manual Cloudflare deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The `cdd-demo` Pages project uses Direct Upload, with no Git integration.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Run the build and verification commands above.
+2. Open **Workers & Pages → cdd-demo → Create deployment** in Cloudflare.
+3. Choose **Production** and upload `dist/`, or a ZIP of its contents. Keep
+   `index.html` at the upload root. Do not upload the repository, `.vercel/`,
+   credentials, or local configuration.
+4. Select **Save and deploy** and wait for success.
+5. Open the public demo. Create a rectangle, select it, change its properties,
+   and check undo/redo and reload persistence. On a fresh browser scene, use
+   **RESET** once if the rectangle tool does not respond, as described in the
+   root README.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Pushes and merges validate the code only. Every publication requires a separate
+manual upload. The existing Vercel project and its build settings remain intact;
+keep **Settings → Git** disconnected and `git.deploymentEnabled` set to `false`.
+Manual Vercel deployment remains available subject to the account's limits.

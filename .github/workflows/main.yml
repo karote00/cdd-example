@@ -9,6 +9,8 @@ on:
       - '**.tsx'
       - '**.js'
       - '**.jsx'
+      - '**.md'
+      - '**.mdx'
       - 'package.json'
       - 'yarn.lock'
       - '**/vercel.json'
@@ -19,6 +21,8 @@ on:
       - '**.tsx'
       - '**.js'
       - '**.jsx'
+      - '**.md'
+      - '**.mdx'
       - 'package.json'
       - 'yarn.lock'
       - '**/vercel.json'
@@ -50,7 +54,10 @@ jobs:
         run: yarn test:deployment
 
       - name: Build React
-        run: yarn react:build # 先執行 react:build，確保測試前已經 build 完成
+        run: yarn react:build
+
+      - name: Verify static demo artifact
+        run: yarn test:build:demo
 
       - name: Lint
         run: yarn lint:ci

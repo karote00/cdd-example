@@ -11,6 +11,8 @@ on:
       - '**.jsx'
       - 'package.json'
       - 'yarn.lock'
+      - '**/vercel.json'
+      - '.github/workflows/main.yml'
   pull_request:
     paths:
       - '**.ts'
@@ -19,6 +21,8 @@ on:
       - '**.jsx'
       - 'package.json'
       - 'yarn.lock'
+      - '**/vercel.json'
+      - '.github/workflows/main.yml'
 
 jobs:
   validate:
@@ -41,6 +45,9 @@ jobs:
 
       - name: Build turbo.json
         run: yarn gen:turbo
+
+      - name: Verify manual deployment configuration
+        run: yarn test:deployment
 
       - name: Build React
         run: yarn react:build # 先執行 react:build，確保測試前已經 build 完成

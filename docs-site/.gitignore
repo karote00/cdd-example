@@ -3,6 +3,7 @@
 
 # Production
 /build
+/build-cloudflare
 
 # Generated files
 .docusaurus

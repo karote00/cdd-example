@@ -25,6 +25,7 @@
     "react:build": "turbo run react:build",
     "test": "turbo run test",
     "test:ci": "turbo run test:ci",
+    "test:deployment": "node --test scripts/__tests__/vercel-deployment.test.js",
     "lint": "eslint .",
     "lint:ci": "eslint .",
     "clean": "turbo run clean",

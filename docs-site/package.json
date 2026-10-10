@@ -8,6 +8,8 @@
     "docusaurus": "docusaurus",
     "dev:docs": "docusaurus start",
     "build": "docusaurus build",
+    "build:cloudflare": "docusaurus build --config docusaurus.cloudflare.config.ts --out-dir build-cloudflare",
+    "test:build:cloudflare": "node --test tests/static-delivery.test.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

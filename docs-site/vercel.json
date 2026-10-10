@@ -4,10 +4,6 @@
   "buildCommand": "yarn build",
   "outputDirectory": "build",
   "git": {
-    "deploymentEnabled": {
-      "main": true,
-      "development": false,
-      "*": false
-    }
+    "deploymentEnabled": false
   }
 }

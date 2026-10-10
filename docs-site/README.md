@@ -17,11 +17,18 @@ yarn workspace docs-site dev:docs
 
 ## Existing deployment
 
-The existing `build` and `deploy` commands, `docusaurus.config.ts`, and
-`vercel.json` retain their existing behavior. `yarn workspace docs-site build`
+The existing `build` and `deploy` commands and `docusaurus.config.ts` retain
+their existing behavior. `yarn workspace docs-site build`
 still writes to `docs-site/build`, the directory used by Vercel. The original
 configuration's placeholder production origin is deliberately unchanged.
 The existing `deploy` command remains the Docusaurus GitHub Pages command.
+
+The Demo and documentation Vercel configurations disable Git-triggered
+deployment with `git.deploymentEnabled: false`. Existing Vercel projects,
+install/build commands, and output directories are preserved for manual
+deployment through Vercel. This does not remove existing deployments or resolve
+account-level deployment restrictions. `yarn test:deployment` guards both
+configurations in CI; ordinary push and PR validation does not publish a site.
 
 ## Build and verify the Cloudflare copy
 

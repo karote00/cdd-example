@@ -4,13 +4,18 @@ import { join } from 'node:path'
 import { test } from 'node:test'
 import { fileURLToPath, URL } from 'node:url'
 
-const buildDirectory = fileURLToPath(new URL('../build/', import.meta.url))
-const productionOrigin = 'https://cdd-docs.pages.dev'
-const htmlFiles = readdirSync(buildDirectory, { recursive: true }).filter(
-  (file) => file.endsWith('.html')
+const buildDirectory = fileURLToPath(
+  new URL('../build-cloudflare/', import.meta.url)
 )
+const productionOrigin = 'https://cdd-docs.pages.dev'
+function listHtmlFiles() {
+  return readdirSync(buildDirectory, { recursive: true }).filter((file) =>
+    file.endsWith('.html')
+  )
+}
 
 test('all generated pages use the published Cloudflare origin', () => {
+  const htmlFiles = listHtmlFiles()
   assert.ok(htmlFiles.length > 1, 'Build the complete documentation site first')
   for (const file of htmlFiles) {
     const html = readFileSync(join(buildDirectory, file), 'utf8')
@@ -26,7 +31,21 @@ test('all generated pages use the published Cloudflare origin', () => {
   }
 })
 
+test('the default build keeps its existing production origin', () => {
+  const html = readFileSync(
+    new URL('../build/index.html', import.meta.url),
+    'utf8'
+  )
+  const canonical = html.match(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/)
+  assert.ok(canonical)
+  assert.equal(
+    new URL(canonical[1]).origin,
+    'https://your-docusaurus-site.example.com'
+  )
+})
+
 test('the upload includes entry pages, a real 404 page, and referenced assets', () => {
+  const htmlFiles = listHtmlFiles()
   for (const file of [
     'index.html',
     '404.html',

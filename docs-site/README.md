@@ -30,6 +30,13 @@ deployment through Vercel. This does not remove existing deployments or resolve
 account-level deployment restrictions. `yarn test:deployment` guards both
 configurations in CI; ordinary push and PR validation does not publish a site.
 
+Keep both Vercel projects disconnected from Git in **Settings → Git** as well.
+This stops provider-side Git event handling, including account-blocked commit
+statuses that can appear before branch configuration is evaluated. Existing
+deployments can still be redeployed manually; new local builds can be published
+with Vercel CLI linked to the existing project. Reconnecting Git would restore
+that automatic event entry point.
+
 ## Build and verify the Cloudflare copy
 
 ```bash
